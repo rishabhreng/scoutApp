@@ -2,12 +2,15 @@ package com.scoutingapp;
 
 //TODO add QR functionality to sendInfo()
 
+import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
@@ -39,14 +42,17 @@ public class SceneController {
 //page 2
     @FXML private Text ca;
 
+//page 6
+    @FXML private ImageView imageBox;
+
     //used for changing pages
     private static int sceneIndex = 0;
-
+    private static int codeNum;
     //stores user input data
     private static HashMap<String, String> info = new HashMap<>();
 
     //compiles data in info HashMap into a String of text and sends to console
-    public void sendInfo() {
+    public void sendInfo() throws Exception {
 //        System.out.println(Arrays.toString(info.entrySet().toArray()));
         String output = "";
         for (Object keyName : info.keySet()) {
@@ -54,8 +60,12 @@ public class SceneController {
             output = output + "=" + info.get(keyName) + ";";
         }
         output = output.substring(0, output.length()-1);
-        System.out.println(output);
-    }
+//        System.out.println(output);
+
+//        two plausible ways to send QR Code
+//        QRFuncs.generateQRCode(output, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
+        QRFuncs.generateQRCode(output, "src\\main\\resources\\qrcode.png");
+        }
 
     //used in changing pages, doesn't need to be edited
     private void setPage(ActionEvent event) throws IOException {
@@ -76,21 +86,23 @@ public class SceneController {
                 info.put("mn", mn.getText());
                 info.put("ml", ml.getValue());
                 info.put("cp", String.valueOf(cp.isSelected()));
-                System.out.println(Arrays.toString(info.entrySet().toArray()));
+                info.put("rp", rp.getValue());
+//                System.out.println(Arrays.toString(info.entrySet().toArray()));
                 break;
             case 2:
                 info.put("ca",ca.getText());
-                System.out.println(Arrays.toString(info.entrySet().toArray()));
+//                System.out.println(Arrays.toString(info.entrySet().toArray()));
                 break;
             default:
-                System.out.println(Arrays.toString(info.entrySet().toArray()));
+//                System.out.println(Arrays.toString(info.entrySet().toArray()));
         }
     }
 
     //don't edit
     @FXML public void goToNextPage(ActionEvent event) throws IOException {
         collectData();
-        if (sceneIndex < 6) sceneIndex++;
+        if (sceneIndex >=4) sceneIndex = 0;
+        else sceneIndex++;
         setPage(event);
     }
     @FXML public void goToPrevPage(ActionEvent event) throws IOException {

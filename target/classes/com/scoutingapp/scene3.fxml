@@ -4,7 +4,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
    <children>
       <Button layoutX="161.0" layoutY="134.0" mnemonicParsing="false" onAction="#sendInfo" text="Send Info">
@@ -12,5 +11,7 @@
             <Font size="50.0" />
          </font>
       </Button>
+      <Button layoutX="398.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page" />
+      <Button layoutX="135.0" layoutY="319.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page" />
    </children>
 </AnchorPane>
