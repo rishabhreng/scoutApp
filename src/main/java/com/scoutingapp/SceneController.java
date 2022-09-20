@@ -76,6 +76,7 @@ public class SceneController {
 //        two plausible ways to send QR Code
 //        QRFuncs.generateQRCode(output, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
         QRFuncs.generateQRCode(output, "src\\main\\resources\\qrcode.png");
+        System.out.println(Arrays.toString(info.entrySet().toArray()));
         }
 
     //used in changing pages, doesn't need to be edited
