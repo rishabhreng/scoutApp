@@ -13,7 +13,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="de" layoutX="14.0" layoutY="48.0" prefWidth="150.0" promptText="Defense Evasion">
+      <ComboBox fx:id="de" layoutX="14.0" layoutY="48.0" prefHeight="26.0" prefWidth="159.0" promptText="Defense Evasion">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Didn't Encounter Defense" />
@@ -23,7 +23,7 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <ComboBox fx:id="df" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="162.0" promptText="Defense Performance">
+      <ComboBox fx:id="df" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="159.0" promptText="Defense Performance">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Didn't Play Defense" />

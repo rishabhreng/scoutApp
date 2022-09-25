@@ -1,6 +1,6 @@
 package com.scoutingapp;
 
-//TODO add QR functionality to sendInfo()
+//TODO think about if it's ok that the pages always reset
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,11 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -51,32 +53,30 @@ public class SceneController {
     @FXML private ComboBox<String> df;
     @FXML private TextField co;
     @FXML private Text f;
-
-    //page 6
+//page 6
     @FXML private ImageView imageBox;
-
     //used for changing pages
     private static int sceneIndex = 0;
-    private static int codeNum;
 
     //stores user input data
-    private static HashMap<String, String> info = new HashMap<>();
+    private static final HashMap<String, String> info = new HashMap<>();
 
-    //compiles data in info HashMap into a String of text and sends to console
-    public void sendInfo() throws Exception {
-//        System.out.println(Arrays.toString(info.entrySet().toArray()));
-        String output = "";
+    //compiles data in info HashMap into a String of text and sends to console/QR
+   @FXML public void sendInfo() throws Exception {
+        StringBuilder output = new StringBuilder();
         for (Object keyName : info.keySet()) {
-            output += keyName;
-            output = output + "=" + info.get(keyName) + ";";
+            output.append(keyName);
+            output.append("=").append(info.get(keyName)).append(";");
         }
-        output = output.substring(0, output.length()-1);
-//        System.out.println(output);
+        output = new StringBuilder(output.substring(0, output.length() - 1));
 
 //        two plausible ways to send QR Code
 //        QRFuncs.generateQRCode(output, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
-        QRFuncs.generateQRCode(output, "src\\main\\resources\\qrcode.png");
-        System.out.println(Arrays.toString(info.entrySet().toArray()));
+        QRFuncs.generateQRCode(output.toString(), "src/main/resources/com/scoutingapp/qrcode.png");
+        File file = new File("src/main/resources/com/scoutingapp/qrcode.png");
+        Image img = new Image(file.getAbsolutePath());
+        imageBox.setImage(img);
+        System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
         }
 
     //used in changing pages, doesn't need to be edited
@@ -90,7 +90,7 @@ public class SceneController {
     }
 
     //sends data to info HashMap, needs to be edited with introduction of new data elements
-    public void collectData() {
+    @FXML public void collectData() {
         switch (sceneIndex) {
             case 1:
                 info.put("sln", sln.getText());
@@ -126,17 +126,15 @@ public class SceneController {
             default:
                 System.out.println("default case");
         }
-                System.out.println(Arrays.toString(info.entrySet().toArray()));
+        System.out.println(Arrays.toString(info.entrySet().toArray()));
     }
 
     //don't edit
     @FXML public void goToNextPage(ActionEvent event) throws IOException {
-        System.out.println("page number is " + sceneIndex);
         collectData();
-        if (sceneIndex >= 7) sceneIndex = 0;
+        if (sceneIndex >= 6) sceneIndex = 0;
         else sceneIndex++;
         setPage(event);
-        System.out.println("new page number is " + sceneIndex);
     }
     @FXML public void goToPrevPage(ActionEvent event) throws IOException {
         collectData();
@@ -168,27 +166,27 @@ public class SceneController {
         if(!text.getText().equals("0")) text.setText(String.valueOf(Integer.parseInt(text.getText())-1));}
 
     //add more of these when you add more "incrementer/decrementer button" elements for text elements
-    @FXML public void incrementCA(ActionEvent actionEvent) {increment(ca);}
-    @FXML public void decrementCA(ActionEvent actionEvent) {decrement(ca);}
+    @FXML public void incrementCA() {increment(ca);}
+    @FXML public void decrementCA() {decrement(ca);}
 
-    @FXML public void incrementUCSA(ActionEvent actionEvent) {increment(ucsa);}
-    @FXML public void decrementUCSA(ActionEvent actionEvent) {decrement(ucsa);}
+    @FXML public void incrementUCSA() {increment(ucsa);}
+    @FXML public void decrementUCSA() {decrement(ucsa);}
 
-    @FXML public void incrementLCSA(ActionEvent actionEvent) {increment(lcsa);}
-    @FXML public void decrementLCSA(ActionEvent actionEvent) {decrement(lcsa);}
+    @FXML public void incrementLCSA() {increment(lcsa);}
+    @FXML public void decrementLCSA() {decrement(lcsa);}
 
-    @FXML public void incrementCMDA(ActionEvent actionEvent) {increment(cmda);}
-    @FXML public void decrementCMDA(ActionEvent actionEvent) {decrement(cmda);}
+    @FXML public void incrementCMDA() {increment(cmda);}
+    @FXML public void decrementCMDA() {decrement(cmda);}
 
-    @FXML public void incrementUCST(ActionEvent actionEvent) {increment(ucst);}
-    @FXML public void decrementUCST(ActionEvent actionEvent) {decrement(ucst);}
+    @FXML public void incrementUCST() {increment(ucst);}
+    @FXML public void decrementUCST() {decrement(ucst);}
 
-    @FXML public void incrementLCST(ActionEvent actionEvent) {increment(lcst);}
-    @FXML public void decrementLCST(ActionEvent actionEvent) {decrement(lcst);}
+    @FXML public void incrementLCST() {increment(lcst);}
+    @FXML public void decrementLCST() {decrement(lcst);}
 
-    @FXML public void incrementCMDT(ActionEvent actionEvent) {increment(cmdt);}
-    @FXML public void decrementCMDT(ActionEvent actionEvent) {decrement(cmdt);}
+    @FXML public void incrementCMDT() {increment(cmdt);}
+    @FXML public void decrementCMDT() {decrement(cmdt);}
 
-    @FXML public void incrementF(ActionEvent actionEvent) {increment(f);}
-    @FXML public void decrementF(ActionEvent actionEvent) {decrement(f);}
+    @FXML public void incrementF() {increment(f);}
+    @FXML public void decrementF() {decrement(f);}
 }

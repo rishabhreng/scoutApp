@@ -13,16 +13,16 @@
       </Text>
       <Text layoutX="27.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper Cargo Scored" />
       <Text layoutX="27.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lower Cargo Scored" />
-      <Text layoutX="27.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Missed/Dropped" />
-      <Button layoutX="141.0" layoutY="73.0" mnemonicParsing="false" onAction="#decrementUCST" text="-" />
-      <Button layoutX="136.0" layoutY="112.0" mnemonicParsing="false" onAction="#decrementLCST" text="-" />
+      <Text layoutX="18.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Missed/Dropped" />
+      <Button layoutX="152.0" layoutY="73.0" mnemonicParsing="false" onAction="#decrementUCST" text="-" />
+      <Button layoutX="152.0" layoutY="112.0" mnemonicParsing="false" onAction="#decrementLCST" text="-" />
       <Button layoutX="152.0" layoutY="159.0" mnemonicParsing="false" onAction="#decrementCMDT" text="-" />
-      <Text fx:id="ucst" layoutX="162.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text fx:id="lcst" layoutX="157.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text fx:id="cmdt" layoutX="173.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Button layoutX="169.0" layoutY="73.0" mnemonicParsing="false" onAction="#incrementUCST" text="+" />
-      <Button layoutX="168.0" layoutY="112.0" mnemonicParsing="false" onAction="#incrementLCST" text="+" />
-      <Button layoutX="182.0" layoutY="159.0" mnemonicParsing="false" onAction="#incrementCMDT" text="+" />
+      <Text fx:id="ucst" layoutX="179.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="lcst" layoutX="179.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="cmdt" layoutX="179.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Button layoutX="194.0" layoutY="72.0" mnemonicParsing="false" onAction="#incrementUCST" text="+" />
+      <Button layoutX="194.0" layoutY="112.0" mnemonicParsing="false" onAction="#incrementLCST" text="+" />
+      <Button layoutX="194.0" layoutY="159.0" mnemonicParsing="false" onAction="#incrementCMDT" text="+" />
       <Button layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
          <font>
             <Font size="18.0" />

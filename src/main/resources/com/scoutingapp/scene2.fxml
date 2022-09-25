@@ -12,9 +12,9 @@
          </font>
       </Text>
       <CheckBox fx:id="ta" layoutX="31.0" layoutY="95.0" mnemonicParsing="false" text="Taxied?" />
-      <Button layoutX="156.0" layoutY="146.0" mnemonicParsing="false" onAction="#incrementCA" text="+" />
-      <Text fx:id="ca" layoutX="135.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="21.0" />
-      <Button layoutX="114.0" layoutY="146.0" mnemonicParsing="false" onAction="#decrementCA" text="-" />
+      <Button layoutX="186.0" layoutY="146.0" mnemonicParsing="false" onAction="#incrementCA" text="+" />
+      <Text fx:id="ca" layoutX="163.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="21.0" />
+      <Button layoutX="146.0" layoutY="146.0" mnemonicParsing="false" onAction="#decrementCA" text="-" />
       <Text layoutX="20.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Acquired" />
       <Button layoutX="482.0" layoutY="361.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
          <font>
@@ -27,14 +27,14 @@
       <Text layoutX="20.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper Cargo Scored" />
       <Text layoutX="20.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lower Cargo Scored" />
       <Text layoutX="20.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Missed/Dropped" />
-      <Button layoutX="130.0" layoutY="180.0" mnemonicParsing="false" onAction="#decrementUCSA" text="-" />
-      <Button layoutX="130.0" layoutY="208.0" mnemonicParsing="false" onAction="#decrementLCSA" text="-" />
+      <Button layoutX="146.0" layoutY="180.0" mnemonicParsing="false" onAction="#decrementUCSA" text="-" />
+      <Button layoutX="146.0" layoutY="208.0" mnemonicParsing="false" onAction="#decrementLCSA" text="-" />
       <Button layoutX="146.0" layoutY="239.0" mnemonicParsing="false" onAction="#decrementCMDA" text="-" />
-      <Text fx:id="ucsa" layoutX="156.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text fx:id="lcsa" layoutX="151.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="ucsa" layoutX="170.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="lcsa" layoutX="170.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
       <Text fx:id="cmda" layoutX="170.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Button layoutX="163.0" layoutY="180.0" mnemonicParsing="false" onAction="#incrementUCSA" text="+" />
-      <Button layoutX="162.0" layoutY="208.0" mnemonicParsing="false" onAction="#incrementLCSA" text="+" />
-      <Button layoutX="181.0" layoutY="239.0" mnemonicParsing="false" onAction="#incrementCMDA" text="+" />
+      <Button layoutX="186.0" layoutY="180.0" mnemonicParsing="false" onAction="#incrementUCSA" text="+" />
+      <Button layoutX="186.0" layoutY="208.0" mnemonicParsing="false" onAction="#incrementLCSA" text="+" />
+      <Button layoutX="186.0" layoutY="239.0" mnemonicParsing="false" onAction="#incrementCMDA" text="+" />
    </children>
 </AnchorPane>
