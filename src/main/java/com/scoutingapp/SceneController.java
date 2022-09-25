@@ -55,9 +55,9 @@ public class SceneController {
     @FXML private Text f;
 //page 6
     @FXML private ImageView imageBox;
+
     //used for changing pages
     private static int sceneIndex = 0;
-
     //stores user input data
     private static final HashMap<String, String> info = new HashMap<>();
 
@@ -65,8 +65,13 @@ public class SceneController {
    @FXML public void sendInfo() throws Exception {
         StringBuilder output = new StringBuilder();
         for (Object keyName : info.keySet()) {
-            output.append(keyName);
-            output.append("=").append(info.get(keyName)).append(";");
+            output.append(keyName).append("=");
+            if (info.get(keyName) == null) {}
+            else if (info.get(keyName).equals("true"))  output.append("1");
+            else if (info.get(keyName).equals("false")) output.append("0");
+            else output.append(info.get(keyName));
+            output.append(";");
+
         }
         output = new StringBuilder(output.substring(0, output.length() - 1));
 
