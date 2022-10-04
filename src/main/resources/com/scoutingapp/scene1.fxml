@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
    <children>
       <Text layoutX="226.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregame">
          <font>
@@ -19,7 +19,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" />
+      <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D." />
 
       <CheckBox fx:id="cp" layoutX="36.0" layoutY="146.0" mnemonicParsing="false" text="Cargo Preload" />
 
@@ -59,11 +59,11 @@
          </font></Text>
       <LimitedTextField fx:id="tn" layoutX="401.0" layoutY="85.0" onKeyPressed="#limit" />
 
-      <Button layoutX="13.0" layoutY="355.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
+      <Button layoutY="360.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button layoutX="489.0" layoutY="346.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
+      <Button layoutX="494.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
          <font>
             <Font size="18.0" />
          </font></Button>

@@ -6,11 +6,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+<?import com.scoutingapp.LimitedTextField?>
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
    <children>
-      <Text layoutX="244.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Miscellaneous">
+      <Text layoutX="161.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Miscellaneous">
          <font>
-            <Font size="18.0" />
+            <Font size="38.0" />
          </font>
       </Text>
       <ComboBox fx:id="de" layoutX="14.0" layoutY="48.0" prefHeight="26.0" prefWidth="159.0" promptText="Defense Evasion">
@@ -34,12 +35,21 @@
          </items>
       </ComboBox>
       <CheckBox fx:id="dt" layoutX="22.0" layoutY="138.0" mnemonicParsing="false" text="Died/Tipped" />
-      <TextField fx:id="co" layoutX="176.0" layoutY="39.0" prefHeight="116.0" prefWidth="417.0" promptText="Comments (swerve/tank, fast/slow speed, climb time, crippled by defense?-couldn't score; driver ability/style;strategic/problem solving; type of fouls drawn: pinning,damage to other robots, inside other robot's frame perimeter;consistent shooting from a few spots; anything else notable " />
+      <TextField fx:id="co" layoutX="179.0" layoutY="48.0" prefHeight="116.0" prefWidth="405.0" promptText="Comments (swerve/tank, fast/slow speed, climb time, crippled by defense?-couldn't score; driver ability/style;strategic/problem solving; type of fouls drawn: pinning,damage to other robots, inside other robot's frame perimeter;consistent shooting from a few spots; anything else notable ">
+         <font>
+            <Font size="10.0" />
+         </font></TextField>
       <Text layoutX="36.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fouls" />
       <Button layoutX="63.0" layoutY="196.0" mnemonicParsing="false" onAction="#decrementF" text="-" />
       <Button layoutX="105.0" layoutY="196.0" mnemonicParsing="false" onAction="#incrementF" text="+" />
-      <Text fx:id="f" layoutX="84.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page" />
-      <Button layoutX="528.0" layoutY="361.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page" />
+      <LimitedTextField fx:id="f" layoutX="84.0" layoutY="214.0" text="0" />
+      <Button layoutY="360.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="495.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

@@ -16,6 +16,11 @@ public class QRFuncs {
         BitMatrix bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, 320, 320);
 
         Path filePath = Paths.get(path);
-        MatrixToImageWriter.writeToPath(bitMatrix, "PNG", filePath);
+        try {
+            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", filePath);
+            System.out.println("worked");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

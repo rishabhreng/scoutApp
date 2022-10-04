@@ -1,7 +1,5 @@
 package com.scoutingapp;
 
-//TODO think about if it's ok that the pages always reset
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,10 +38,10 @@ public class SceneController {
     @FXML private ComboBox<String> ml; //match level
     @FXML private CheckBox cp; //cargo preload
 //page 2
-    @FXML private Text ca, ucsa, lcsa, cmda; //cargo acquired, ucargo, lcargo, cargodropped
+    @FXML private LimitedTextField ca, ucsa, lcsa, cmda; //cargo acquired, ucargo, lcargo, cargodropped
     @FXML private CheckBox ta; //taxied
 //page 3
-    @FXML private Text ucst, lcst, cmdt; //ucargo, lcargo, cargodropped
+    @FXML private LimitedTextField ucst, lcst, cmdt; //ucargo, lcargo, cargodropped
 //page4
     @FXML private CheckBox cla;
     @FXML private ComboBox<String> cl;
@@ -52,7 +50,7 @@ public class SceneController {
     @FXML private ComboBox<String> de;
     @FXML private ComboBox<String> df;
     @FXML private TextField co;
-    @FXML private Text f;
+    @FXML private LimitedTextField f;
 //page 6
     @FXML private ImageView imageBox;
 
@@ -77,8 +75,8 @@ public class SceneController {
 
 //        two plausible ways to send QR Code
 //        QRFuncs.generateQRCode(output, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
-        QRFuncs.generateQRCode(output.toString(), "src/main/resources/com/scoutingapp/qrcode.png");
-        File file = new File("src/main/resources/com/scoutingapp/qrcode.png");
+        QRFuncs.generateQRCode(output.toString(), "qrcode.png");
+        File file = new File("qrcode.png");
         Image img = new Image(file.getAbsolutePath());
         imageBox.setImage(img);
         System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
@@ -165,10 +163,10 @@ public class SceneController {
     }
 
     //don't edit
-    public void increment(Text text) {
-        text.setText(String.valueOf(Integer.parseInt(text.getText())+1));}
-    public void decrement(Text text) {
-        if(!text.getText().equals("0")) text.setText(String.valueOf(Integer.parseInt(text.getText())-1));}
+    public void increment(LimitedTextField txtfield) {
+        txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())+1));}
+    public void decrement(LimitedTextField txtfield) {
+        if(!txtfield.getText().equals("0")) txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())-1));}
 
     //add more of these when you add more "incrementer/decrementer button" elements for text elements
     @FXML public void incrementCA() {increment(ca);}
