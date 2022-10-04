@@ -13,7 +13,7 @@
    </Text>
    <CheckBox fx:id="ta" layoutX="31.0" layoutY="95.0" mnemonicParsing="false" text="Taxied?" />
    <Button alignment="CENTER" layoutX="207.0" layoutY="146.0" mnemonicParsing="false" onAction="#incrementCA" text="+" />
-   <LimitedTextField fx:id="ca" layoutX="171.0" layoutY="146.0" prefHeight="26.0" prefWidth="31.0" text="12" />
+   <LimitedTextField fx:id="ca" layoutX="171.0" layoutY="146.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <Button layoutX="146.0" layoutY="146.0" mnemonicParsing="false" onAction="#decrementCA" text="-" />
    <Text layoutX="20.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Acquired" />
    <Button layoutX="494.0" layoutY="361.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
@@ -32,7 +32,7 @@
    <Button layoutX="146.0" layoutY="180.0" mnemonicParsing="false" onAction="#decrementUCSA" text="-" />
    <Button layoutX="146.0" layoutY="208.0" mnemonicParsing="false" onAction="#decrementLCSA" text="-" />
    <Button layoutX="146.0" layoutY="239.0" mnemonicParsing="false" onAction="#decrementCMDA" text="-" />
-   <LimitedTextField fx:id="ucsa" layoutX="170.0" layoutY="180.0" prefHeight="26.0" prefWidth="31.0" text="12" />
+   <LimitedTextField fx:id="ucsa" layoutX="170.0" layoutY="180.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <LimitedTextField fx:id="lcsa" layoutX="170.0" layoutY="209.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <LimitedTextField fx:id="cmda" layoutX="170.0" layoutY="240.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <Button layoutX="207.0" layoutY="180.0" mnemonicParsing="false" onAction="#incrementUCSA" text="+" />

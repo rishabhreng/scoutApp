@@ -4,6 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -67,5 +68,10 @@
          <font>
             <Font size="18.0" />
          </font></Button>
+      <ImageView fitHeight="167.0" fitWidth="298.0" layoutX="276.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@field_image.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

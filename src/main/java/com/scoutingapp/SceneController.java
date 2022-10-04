@@ -89,9 +89,13 @@ public class SceneController {
         Scene scene = new Scene(root);
         stage.setTitle("satApp Page" + (sceneIndex));
         stage.setScene(scene);
+        reloadData();
         stage.show();
     }
 
+    private void reloadData() {
+
+    }
     //sends data to info HashMap, needs to be edited with introduction of new data elements
     @FXML public void collectData() {
         switch (sceneIndex) {
