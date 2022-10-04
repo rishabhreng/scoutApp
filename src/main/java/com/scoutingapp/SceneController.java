@@ -90,6 +90,7 @@ public class SceneController {
         stage.setTitle("satApp Page" + (sceneIndex));
         stage.setScene(scene);
         stage.show();
+        stage.setFullScreen(true);
         System.out.println("new page is "  + sceneIndex);
     }
 
