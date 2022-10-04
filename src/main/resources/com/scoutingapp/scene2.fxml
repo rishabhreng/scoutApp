@@ -38,4 +38,9 @@
    <Button layoutX="207.0" layoutY="180.0" mnemonicParsing="false" onAction="#incrementUCSA" text="+" />
    <Button layoutX="207.0" layoutY="209.0" mnemonicParsing="false" onAction="#incrementLCSA" text="+" />
    <Button layoutX="207.0" layoutY="239.0" mnemonicParsing="false" onAction="#incrementCMDA" text="+" />
+   <Button layoutX="250.0" layoutY="361.0" mnemonicParsing="false" onAction="#reloadData" text="See Info">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
 </AnchorPane>

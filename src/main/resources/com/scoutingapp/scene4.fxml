@@ -39,5 +39,10 @@
          </FXCollections>
          </items>
       </ComboBox>
+      <Button layoutX="251.0" layoutY="360.0" mnemonicParsing="false" onAction="#reloadData" text="See Info">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

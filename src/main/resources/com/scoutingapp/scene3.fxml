@@ -34,5 +34,10 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Button layoutX="242.0" layoutY="360.0" mnemonicParsing="false" onAction="#reloadData" text="See Info">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

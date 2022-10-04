@@ -73,5 +73,9 @@
             <Image url="@field_image.png" />
          </image>
       </ImageView>
+      <Button layoutX="248.0" layoutY="360.0" mnemonicParsing="false" onAction="#reloadData" prefHeight="40.0" prefWidth="103.0" text="See Info">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

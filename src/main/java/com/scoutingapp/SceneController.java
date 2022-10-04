@@ -65,8 +65,8 @@ public class SceneController {
         for (Object keyName : info.keySet()) {
             output.append(keyName).append("=");
             if (info.get(keyName) == null) {}
-            else if (info.get(keyName).equals("true"))  output.append("1");
-            else if (info.get(keyName).equals("false")) output.append("0");
+//            else if (info.get(keyName).equals("true"))  output.append("1");
+//            else if (info.get(keyName).equals("false")) output.append("0");
             else output.append(info.get(keyName));
             output.append(";");
 
@@ -89,55 +89,82 @@ public class SceneController {
         Scene scene = new Scene(root);
         stage.setTitle("satApp Page" + (sceneIndex));
         stage.setScene(scene);
-        reloadData();
         stage.show();
+        System.out.println("new page is "  + sceneIndex);
     }
 
-    private void reloadData() {
+    //reloads data when desired, make sure not to accidentally overwrite data while fumbling around
+    @FXML private void reloadData() {
+        if (sceneIndex == 1) {
+            sln.setText(info.get("sln"));
+            mn.setText(info.get("mn"));
+            tn.setText(info.get("tn"));
+            rp.setValue(info.get("rp"));
+            cp.setSelected(Boolean.parseBoolean(info.get("cp")));
+            ml.setValue(info.get("ml"));
+        } else if (sceneIndex == 2) {
+            ca.setText(info.get("ca"));
+            ucsa.setText(info.get("ucsa"));
+            lcsa.setText(info.get("lcsa"));
+            cmda.setText(info.get("cmda"));
+            ta.setSelected(Boolean.parseBoolean(info.get("ta")));
+        } else if (sceneIndex == 3) {
+            ucst.setText(info.get("ucst"));
+            lcst.setText(info.get("lcst"));
+            cmdt.setText(info.get("cmdt"));
+        } else if (sceneIndex == 4) {
+            cla.setSelected(Boolean.parseBoolean(info.get("cla")));
+            cl.setValue(info.get("cl"));
+        } else if (sceneIndex == 5) {
+            dt.setSelected(Boolean.parseBoolean(info.get("dt")));
+            de.setValue(info.get("de"));
+            df.setValue(info.get("df"));
+            co.setText(info.get("co"));
+            f.setText(info.get("f"));
 
+            System.out.println("default reloadData call");
+        } else {
+            System.out.println("default reloadData call");
+        }
     }
+
     //sends data to info HashMap, needs to be edited with introduction of new data elements
     @FXML public void collectData() {
-        switch (sceneIndex) {
-            case 1:
-                info.put("sln", sln.getText());
-                info.put("tn", tn.getText());
-                info.put("mn", mn.getText());
-                info.put("ml", ml.getValue());
-                info.put("cp", String.valueOf(cp.isSelected()));
-                info.put("rp", rp.getValue());
-                break;
-            case 2:
-                info.put("ca",ca.getText());
-                info.put("ucsa", ucsa.getText());
-                info.put("lcsa", lcsa.getText());
-                info.put("cmda", cmda.getText());
-                info.put("ta", String.valueOf(ta.isSelected()));
-                break;
-            case 3:
-                info.put("ucst", ucst.getText());
-                info.put("lcst", lcst.getText());
-                info.put("cmdt", cmdt.getText());
-                break;
-            case 4:
-                info.put("cla", String.valueOf(cla.isSelected()));
-                info.put("cl", cl.getValue());
-                break;
-            case 5:
-                info.put("dt", String.valueOf(dt.isSelected()));
-                info.put("df", df.getValue());
-                info.put("de", de.getValue());
-                info.put("co", co.getText());
-                info.put("f", f.getText());
-                break;
-            default:
-                System.out.println("default case");
+        if (sceneIndex == 1) {
+            info.put("sln", sln.getText());
+            info.put("tn", tn.getText());
+            info.put("mn", mn.getText());
+            info.put("ml", ml.getValue());
+            info.put("cp", String.valueOf(cp.isSelected()));
+            info.put("rp", rp.getValue());
+        } else if (sceneIndex == 2) {
+            info.put("ca", ca.getText());
+            info.put("ucsa", ucsa.getText());
+            info.put("lcsa", lcsa.getText());
+            info.put("cmda", cmda.getText());
+            info.put("ta", String.valueOf(ta.isSelected()));
+        } else if (sceneIndex == 3) {
+            info.put("ucst", ucst.getText());
+            info.put("lcst", lcst.getText());
+            info.put("cmdt", cmdt.getText());
+        } else if (sceneIndex == 4) {
+            info.put("cla", String.valueOf(cla.isSelected()));
+            info.put("cl", cl.getValue());
+        } else if (sceneIndex == 5) {
+            info.put("dt", String.valueOf(dt.isSelected()));
+            info.put("df", df.getValue());
+            info.put("de", de.getValue());
+            info.put("co", co.getText());
+            info.put("f", f.getText());
+        } else {
+            System.out.println("default case");
         }
         System.out.println(Arrays.toString(info.entrySet().toArray()));
     }
 
     //don't edit
     @FXML public void goToNextPage(ActionEvent event) throws IOException {
+        System.out.println("prev page is " + sceneIndex);
         collectData();
         if (sceneIndex >= 6) sceneIndex = 0;
         else sceneIndex++;
