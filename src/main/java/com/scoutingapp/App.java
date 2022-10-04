@@ -16,6 +16,8 @@ public class App extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setFullScreen(true);
+
     }
 
     public static void main(String[] args) {
