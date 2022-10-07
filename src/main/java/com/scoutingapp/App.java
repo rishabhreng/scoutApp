@@ -16,7 +16,10 @@ public class App extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setFullScreen(true);
+        primaryStage.setHeight(1080);
+        primaryStage.setWidth(1920);
+        primaryStage.setMaximized(true);
+//        primaryStage.setFullScreen(true);
 
     }
 
