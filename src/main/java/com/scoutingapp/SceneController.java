@@ -6,15 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -33,7 +38,7 @@ public class SceneController {
 //page 1
     @FXML private LimitedTextField tn; //team number
     @FXML private LimitedTextField mn; //match number
-    @FXML private LimitedTextField sln; //scouter last name
+    @FXML private LimitedTextField sln; //scouter last name`
     @FXML private ComboBox<String> rp; //robot position
     @FXML private ComboBox<String> ml; //match level
     @FXML private CheckBox cp; //cargo preload
@@ -58,24 +63,24 @@ public class SceneController {
     private static int sceneIndex = 0;
     //stores user input data
     private static final HashMap<String, String> info = new HashMap<>();
-
+    static StringBuilder data = new StringBuilder();
+    BufferedImage bufferedImage;
     //compiles data in info HashMap into a String of text and sends to console/QR
    @FXML public void sendInfo() throws Exception {
-        StringBuilder output = new StringBuilder();
         for (Object keyName : info.keySet()) {
-            output.append(keyName).append("=");
+            data.append(keyName).append("=");
             if (info.get(keyName) == null) {}
-//            else if (info.get(keyName).equals("true"))  output.append("1");
-//            else if (info.get(keyName).equals("false")) output.append("0");
-            else output.append(info.get(keyName));
-            output.append(";");
+//            else if (info.get(keyName).equals("true"))  data.append("1");
+//            else if (info.get(keyName).equals("false")) data.append("0");
+            else data.append(info.get(keyName));
+            data.append(";");
 
         }
-        output = new StringBuilder(output.substring(0, output.length() - 1));
+        data = new StringBuilder(data.substring(0, data.length() - 1));
 
 //        two plausible ways to send QR Code
-//        QRFuncs.generateQRCode(output, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
-        QRFuncs.generateQRCode(output.toString(), "qrcode.png");
+//        QRFuncs.generateQRCode(data, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
+        bufferedImage = QRFuncs.generateQRCode(data.toString(), "qrcode.png");
         File file = new File("qrcode.png");
         Image img = new Image(file.getAbsolutePath());
         imageBox.setImage(img);
@@ -192,6 +197,19 @@ public class SceneController {
             src.setLetterField();
             src.setMaxLength(30);
         }
+    }
+
+    @FXML public void doCopyToClipboard(ActionEvent event) {
+       Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+       if (event.getSource().getClass().equals(Button.class))
+           if (((Button) event.getSource()).getText().contains("Text")) {
+               String str = data.toString();
+               clipboard.setContents(new StringSelection(str), null);
+           }
+           else if (((Button) event.getSource()).getText().contains("QR Code")) {
+               CopyImagetoClipBoard ci = new CopyImagetoClipBoard();
+               ci.copyImage(bufferedImage);
+           }
     }
 
     //don't edit

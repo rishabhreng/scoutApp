@@ -4,6 +4,7 @@ module com.scoutingapp {
     requires com.google.zxing;
     requires javafx.graphics;
     requires com.google.zxing.javase;
+    requires java.desktop;
 
     opens com.scoutingapp to javafx.fxml;
     exports com.scoutingapp;
