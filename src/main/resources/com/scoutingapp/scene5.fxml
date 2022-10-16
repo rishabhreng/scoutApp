@@ -17,17 +17,17 @@
       <ComboBox fx:id="de" layoutX="14.0" layoutY="48.0" prefHeight="26.0" prefWidth="159.0" promptText="Defense Evasion">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Didn't Encounter Defense" />
+               <String fx:value="N/A" />
                <String fx:value="Below Average" />
                <String fx:value="Average" />
                <String fx:value="Above Average" />
             </FXCollections>
          </items>
       </ComboBox>
-      <ComboBox fx:id="df" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="159.0" promptText="Defense Performance">
+      <ComboBox fx:id="dp" layoutX="14.0" layoutY="84.0" prefHeight="26.0" prefWidth="159.0" promptText="Defense Performance">
          <items>
             <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Didn't Play Defense" />
+               <String fx:value="N/A" />
                <String fx:value="Below Average" />
                <String fx:value="Average" />
                <String fx:value="Above Average" />
@@ -35,9 +35,9 @@
          </items>
       </ComboBox>
       <CheckBox fx:id="dt" layoutX="22.0" layoutY="138.0" mnemonicParsing="false" text="Died/Tipped" />
-      <TextField fx:id="co" layoutX="179.0" layoutY="48.0" prefHeight="116.0" prefWidth="405.0" promptText="Comments (swerve/tank, fast/slow speed, climb time, crippled by defense?-couldn't score; driver ability/style;strategic/problem solving; type of fouls drawn: pinning,damage to other robots, inside other robot's frame perimeter;consistent shooting from a few spots; anything else notable ">
+      <TextField fx:id="co" alignment="TOP_LEFT" layoutX="179.0" layoutY="48.0" prefHeight="116.0" prefWidth="405.0" promptText="Comments (swerve/tank, fast/slow speed, climb time, crippled by defense?-couldn't score; driver ability/style;strategic/problem solving; type of fouls drawn: pinning,damage to other robots, inside other robot's frame perimeter;consistent shooting from a few spots; anything else notable ">
          <font>
-            <Font size="10.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Text layoutX="36.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fouls" />
       <Button layoutX="63.0" layoutY="196.0" mnemonicParsing="false" onAction="#decrementF" text="-" />
@@ -56,5 +56,9 @@
             <Font size="18.0" />
          </font>
       </Button>
+      <Text layoutX="36.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tech. Fouls" />
+      <Button layoutX="101.0" layoutY="236.0" mnemonicParsing="false" onAction="#decrementTF" prefHeight="26.0" prefWidth="21.0" text="-" />
+      <LimitedTextField fx:id="tf" layoutX="125.0" layoutY="236.0" prefHeight="26.0" prefWidth="28.0" text="0" />
+      <Button layoutX="161.0" layoutY="236.0" mnemonicParsing="false" onAction="#incrementTF" text="+" />
    </children>
 </AnchorPane>

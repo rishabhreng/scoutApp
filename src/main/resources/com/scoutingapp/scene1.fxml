@@ -20,7 +20,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D." />
+      <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D / John Doe" />
 
       <CheckBox fx:id="cp" layoutX="36.0" layoutY="146.0" mnemonicParsing="false" text="Cargo Preload" />
 
@@ -41,7 +41,7 @@
          </font></Text>
       <LimitedTextField fx:id="mn" layoutX="114.0" layoutY="222.0" onKeyPressed="#limit" />
 
-      <ComboBox fx:id="rp" layoutX="23.0" layoutY="261.0" prefWidth="150.0" promptText="Robot Position">
+      <ComboBox fx:id="ran" layoutX="23.0" layoutY="261.0" prefHeight="25.0" prefWidth="171.0" promptText="Robot Alliance Number">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Red-1" />
@@ -77,5 +77,15 @@
          <font>
             <Font size="18.0" />
          </font></Button>
+      <ComboBox fx:id="rp" layoutX="23.0" layoutY="307.0" prefHeight="25.0" prefWidth="171.0" promptText="Robot Field Position">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="1"/>
+               <String fx:value="2"/>
+               <String fx:value="3"/>
+               <String fx:value="4"/>
+            </FXCollections>
+         </items>
+      </ComboBox>
    </children>
 </AnchorPane>

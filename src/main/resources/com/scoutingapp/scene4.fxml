@@ -31,7 +31,7 @@
       <ComboBox fx:id="cl" layoutX="42.0" layoutY="136.0" prefWidth="150.0" promptText="Climb Level">
          <items>
          <FXCollections fx:factory="observableArrayList">
-            <String fx:value="Did Not Attempt/Failed" />
+            <String fx:value="N/A or Failed" />
             <String fx:value="Low Rung" />
             <String fx:value="Middle Rung" />
             <String fx:value="High Rung" />

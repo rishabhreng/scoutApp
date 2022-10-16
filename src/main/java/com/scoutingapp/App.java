@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class App extends Application {
@@ -15,10 +16,13 @@ public class App extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("scene0.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.show();
-        primaryStage.setHeight(1080);
-        primaryStage.setWidth(1920);
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        primaryStage.setWidth(size.getWidth());
+        primaryStage.setHeight(size.getHeight());
         primaryStage.setMaximized(true);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+
 //        primaryStage.setFullScreen(true);
 
     }

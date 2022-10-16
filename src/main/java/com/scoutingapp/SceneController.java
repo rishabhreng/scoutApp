@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.datatransfer.Transferable;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -39,23 +38,25 @@ public class SceneController {
     @FXML private LimitedTextField tn; //team number
     @FXML private LimitedTextField mn; //match number
     @FXML private LimitedTextField sln; //scouter last name`
-    @FXML private ComboBox<String> rp; //robot position
+    @FXML private ComboBox<String> ran; //robot alliance number
+    @FXML private ComboBox<String> rp; //robot field position
     @FXML private ComboBox<String> ml; //match level
     @FXML private CheckBox cp; //cargo preload
 //page 2
-    @FXML private LimitedTextField ca, ucsa, lcsa, cmda; //cargo acquired, ucargo, lcargo, cargodropped
+    @FXML private LimitedTextField aca, ucsa, lcsa, cmda; //cargo acquired, ucargo, lcargo, cargodropped
     @FXML private CheckBox ta; //taxied
 //page 3
     @FXML private LimitedTextField ucst, lcst, cmdt; //ucargo, lcargo, cargodropped
 //page4
-    @FXML private CheckBox cla;
-    @FXML private ComboBox<String> cl;
+    @FXML private CheckBox cla; //climb attempt
+    @FXML private ComboBox<String> cl; //climb level
 //page5
-    @FXML private CheckBox dt;
-    @FXML private ComboBox<String> de;
-    @FXML private ComboBox<String> df;
-    @FXML private TextField co;
-    @FXML private LimitedTextField f;
+    @FXML private CheckBox dt; // died/tipped
+    @FXML private ComboBox<String> de; //defensive evasion
+    @FXML private ComboBox<String> dp; //defensive performance
+    @FXML private TextField co; //comments
+    @FXML private LimitedTextField f; //fouls
+    @FXML private LimitedTextField tf; //tech fouls
 //page 6
     @FXML private ImageView imageBox;
 
@@ -63,20 +64,33 @@ public class SceneController {
     private static int sceneIndex = 0;
     //stores user input data
     private static final HashMap<String, String> info = new HashMap<>();
-    static StringBuilder data = new StringBuilder();
+    static StringBuilder data;
     BufferedImage bufferedImage;
     //compiles data in info HashMap into a String of text and sends to console/QR
    @FXML public void sendInfo() throws Exception {
-        for (Object keyName : info.keySet()) {
-            data.append(keyName).append("=");
-            if (info.get(keyName) == null) {}
-//            else if (info.get(keyName).equals("true"))  data.append("1");
-//            else if (info.get(keyName).equals("false")) data.append("0");
-            else data.append(info.get(keyName));
-            data.append(";");
-
+       data = new StringBuilder();
+//       Integer aca = Integer.parseInt(lcsa.getText()) + Integer.parseInt(ucsa.getText() + Integer.parseInt(cmda.getText()));
+       Integer tca = Integer.parseInt(info.get("lcst")) + Integer.parseInt(info.get("ucst"))+ Integer.parseInt(info.get("cmdt"));
+//       info.put("aca", String.valueOf(aca));
+       info.put("tca", String.valueOf(tca));
+       for (Object keyName : info.keySet()) {
+           data.append(keyName).append("=");
+           if (info.get(keyName) == null) {}
+           else if (info.get(keyName).equals("true"))  data.append("1");
+           else if (info.get(keyName).equals("false")) data.append("0");
+           else if (info.get(keyName).equals("N/A") || info.get(keyName).equals("N/A or Failed")) data.append("0");
+           else if (info.get(keyName).equals("Below Average")) data.append("1");
+           else if (info.get(keyName).equals("Average")) data.append("2");
+           else if (info.get(keyName).equals("Above Average")) data.append("3");
+           else if (info.get(keyName).equals("Low Rung")) data.append("1");
+           else if (info.get(keyName).equals("Middle Rung")) data.append("2");
+           else if (info.get(keyName).equals("High Rung")) data.append("3");
+           else if (info.get(keyName).equals("Traversal Rung")) data.append("4");
+           else data.append(info.get(keyName));
+           data.append(";");
         }
-        data = new StringBuilder(data.substring(0, data.length() - 1));
+
+        data = data.delete(data.lastIndexOf(";"), data.length());
 
 //        two plausible ways to send QR Code
 //        QRFuncs.generateQRCode(data, "src\\main\\codes\\qrcode" + info.get("mn") + "-" + info.get("tn") +".png");
@@ -94,10 +108,12 @@ public class SceneController {
         Scene scene = new Scene(root);
         stage.setTitle("satApp Page" + (sceneIndex));
         stage.setScene(scene);
-        stage.show();
-        stage.setHeight(1080);
-        stage.setWidth(1920);
+
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        stage.setWidth(size.getWidth());
+        stage.setHeight(size.getHeight());
         stage.setMaximized(true);
+        stage.show();
 //        stage.setFullScreen(true);
         System.out.println("new page is "  + sceneIndex);
     }
@@ -108,11 +124,12 @@ public class SceneController {
             sln.setText(info.get("sln"));
             mn.setText(info.get("mn"));
             tn.setText(info.get("tn"));
+            ran.setValue(info.get("ran"));
             rp.setValue(info.get("rp"));
             cp.setSelected(Boolean.parseBoolean(info.get("cp")));
             ml.setValue(info.get("ml"));
         } else if (sceneIndex == 2) {
-            ca.setText(info.get("ca"));
+            aca.setText(info.get("aca"));
             ucsa.setText(info.get("ucsa"));
             lcsa.setText(info.get("lcsa"));
             cmda.setText(info.get("cmda"));
@@ -127,9 +144,10 @@ public class SceneController {
         } else if (sceneIndex == 5) {
             dt.setSelected(Boolean.parseBoolean(info.get("dt")));
             de.setValue(info.get("de"));
-            df.setValue(info.get("df"));
+            dp.setValue(info.get("dp"));
             co.setText(info.get("co"));
             f.setText(info.get("f"));
+            tf.setText(info.get("tf"));
 
             System.out.println("default reloadData call");
         } else {
@@ -145,9 +163,10 @@ public class SceneController {
             info.put("mn", mn.getText());
             info.put("ml", ml.getValue());
             info.put("cp", String.valueOf(cp.isSelected()));
+            info.put("ran", ran.getValue());
             info.put("rp", rp.getValue());
         } else if (sceneIndex == 2) {
-            info.put("ca", ca.getText());
+            info.put("aca", aca.getText());
             info.put("ucsa", ucsa.getText());
             info.put("lcsa", lcsa.getText());
             info.put("cmda", cmda.getText());
@@ -161,10 +180,11 @@ public class SceneController {
             info.put("cl", cl.getValue());
         } else if (sceneIndex == 5) {
             info.put("dt", String.valueOf(dt.isSelected()));
-            info.put("df", df.getValue());
+            info.put("dp", dp.getValue());
             info.put("de", de.getValue());
             info.put("co", co.getText());
             info.put("f", f.getText());
+            info.put("tf", tf.getText());
         } else {
             System.out.println("default case");
         }
@@ -197,7 +217,7 @@ public class SceneController {
             src.setMaxLength(3);
         }
         else if (src.equals(sln)) {
-            src.setLetterField();
+            src.setRestrict("[A-Za-z ]"); //letters + spaces only
             src.setMaxLength(30);
         }
     }
@@ -222,8 +242,8 @@ public class SceneController {
         if(!txtfield.getText().equals("0")) txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())-1));}
 
     //add more of these when you add more "incrementer/decrementer button" elements for text elements
-    @FXML public void incrementCA() {increment(ca);}
-    @FXML public void decrementCA() {decrement(ca);}
+    @FXML public void incrementACA() {increment(aca);}
+    @FXML public void decrementACA() {decrement(aca);}
 
     @FXML public void incrementUCSA() {increment(ucsa);}
     @FXML public void decrementUCSA() {decrement(ucsa);}
@@ -245,4 +265,7 @@ public class SceneController {
 
     @FXML public void incrementF() {increment(f);}
     @FXML public void decrementF() {decrement(f);}
+
+    @FXML public void incrementTF() {increment(tf);}
+    @FXML public void decrementTF() {decrement(tf);}
 }
