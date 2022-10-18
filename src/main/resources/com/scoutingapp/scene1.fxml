@@ -8,92 +8,86 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.scoutingapp.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
    <Text layoutX="226.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregame">
       <font>
-         <Font size="38.0"/>
+         <Font size="38.0" />
       </font>
    </Text>
    <Text layoutX="35.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scouter Name">
       <font>
-         <Font size="16.0"/>
+         <Font size="16.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D / John Doe"/>
+   <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D / John Doe" />
 
-   <CheckBox fx:id="cp" layoutX="36.0" layoutY="146.0" mnemonicParsing="false" text="Cargo Preload"/>
+   <CheckBox fx:id="cp" layoutX="36.0" layoutY="146.0" mnemonicParsing="false" text="Cargo Preload" />
 
    <ComboBox fx:id="ml" layoutX="32.0" layoutY="175.0" prefWidth="150.0" promptText="Match Level">
       <items>
          <FXCollections fx:factory="observableArrayList">
-            <String fx:value="Quals"/>
-            <String fx:value="Quarter-Final"/>
-            <String fx:value="Semi-Final"/>
-            <String fx:value="Final"/>
+            <String fx:value="Quals" />
+            <String fx:value="Quarter-Final" />
+            <String fx:value="Semi-Final" />
+            <String fx:value="Final" />
          </FXCollections>
       </items>
    </ComboBox>
 
    <Text layoutX="23.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num">
       <font>
-         <Font size="16.0"/>
+         <Font size="16.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="mn" layoutX="114.0" layoutY="222.0" onKeyPressed="#limit"/>
+   <LimitedTextField fx:id="mn" layoutX="114.0" layoutY="222.0" onKeyPressed="#limit" />
 
-   <ComboBox fx:id="ran" layoutX="23.0" layoutY="261.0" prefHeight="25.0" prefWidth="171.0"
-             promptText="Robot Alliance Number">
+   <ComboBox fx:id="ran" layoutX="23.0" layoutY="261.0" prefHeight="26.0" prefWidth="245.0" promptText="Robot Alliance Number (red numbers)">
       <items>
          <FXCollections fx:factory="observableArrayList">
-            <String fx:value="Red-1"/>
-            <String fx:value="Red-2"/>
-            <String fx:value="Red-3"/>
-            <String fx:value="Blue-1"/>
-            <String fx:value="Blue-2"/>
-            <String fx:value="Blue-3"/>
+            <String fx:value="Red-1" />
+            <String fx:value="Red-2" />
+            <String fx:value="Red-3" />
+            <String fx:value="Blue-1" />
+            <String fx:value="Blue-2" />
+            <String fx:value="Blue-3" />
          </FXCollections>
       </items>
    </ComboBox>
 
    <Text layoutX="312.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num">
       <font>
-         <Font size="16.0"/>
+         <Font size="16.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="tn" layoutX="401.0" layoutY="85.0" onKeyPressed="#limit"/>
+   <LimitedTextField fx:id="tn" layoutX="401.0" layoutY="85.0" onKeyPressed="#limit" />
 
    <Button layoutY="360.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Button>
    <Button layoutX="494.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Button>
-   <ImageView fitHeight="167.0" fitWidth="298.0" layoutX="276.0" layoutY="148.0" pickOnBounds="true"
-              preserveRatio="true">
+   <ImageView fitHeight="167.0" fitWidth="298.0" layoutX="276.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@field_image.png"/>
+         <Image url="@field_image.png" />
       </image>
    </ImageView>
-   <Button layoutX="248.0" layoutY="360.0" mnemonicParsing="false" onAction="#reloadData" prefHeight="40.0"
-           prefWidth="103.0" text="See Info">
+   <Button layoutX="248.0" layoutY="360.0" mnemonicParsing="false" onAction="#reloadData" prefHeight="40.0" prefWidth="103.0" text="See Info">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
    </Button>
-   <ComboBox fx:id="rp" layoutX="23.0" layoutY="307.0" prefHeight="25.0" prefWidth="171.0"
-             promptText="Robot Field Position">
+   <ComboBox fx:id="rp" layoutX="23.0" layoutY="307.0" prefHeight="26.0" prefWidth="246.0" promptText="Robot Field Position (white numbers)">
       <items>
          <FXCollections fx:factory="observableArrayList">
-            <String fx:value="1"/>
-            <String fx:value="2"/>
-            <String fx:value="3"/>
-            <String fx:value="4"/>
+            <String fx:value="1" />
+            <String fx:value="2" />
+            <String fx:value="3" />
+            <String fx:value="4" />
          </FXCollections>
       </items>
    </ComboBox>
