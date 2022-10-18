@@ -6,30 +6,30 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
-   <children>
-      <Button layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#sendInfo" prefHeight="74.0" prefWidth="383.0" text="Generate QR Code">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Button>
-      <Button layoutX="496.0" layoutY="360.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToNextPage" text="Start Over">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-      <Button layoutY="360.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
-         <font>
-            <Font size="18.0" />
-         </font></Button>
-      <ImageView fx:id="imageBox" fitHeight="273.0" fitWidth="273.0" layoutX="164.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="67.0" prefWidth="132.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="454.0" layoutY="110.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="67.0" prefWidth="132.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-   </children>
+   <Button layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#sendInfo" prefHeight="74.0" prefWidth="383.0" text="Generate QR Code">
+      <font>
+         <Font size="38.0" />
+      </font>
+   </Button>
+   <Button layoutX="496.0" layoutY="360.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goToNextPage" style="-fx-background-color: #ff0000;" text="Start Over">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <Button layoutY="360.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <ImageView fx:id="imageBox" fitHeight="273.0" fitWidth="273.0" layoutX="164.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
+   <Button layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="67.0" prefWidth="132.0" text="Copy Data (Text)" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
+   <Button layoutX="454.0" layoutY="110.0" mnemonicParsing="false" onAction="#doCopyToClipboard" prefHeight="67.0" prefWidth="132.0" text="Copy Data (QR Code)" textAlignment="CENTER" wrapText="true">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Button>
 </AnchorPane>
