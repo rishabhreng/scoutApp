@@ -4,18 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.scoutingapp.SceneController">
-   <Text layoutX="143.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fusion Corps App">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c2c2c2;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+   <Text fill="#238ebc" layoutX="106.0" layoutY="63.0" strokeType="OUTSIDE" style="-fx-font-weight: bold;" text="Fusion Corps App">
       <font>
-         <Font size="39.0"/>
+         <Font size="45.0" />
       </font>
    </Text>
-   <Button layoutX="93.0" layoutY="88.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="254.0"
-           prefWidth="397.0" text="Begin">
+   <Button layoutX="93.0" layoutY="88.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="254.0" prefWidth="397.0" style="-fx-background-color: #000000FF; -fx-text-fill: #FFFFFFFF;" text="Begin" textAlignment="CENTER">
       <font>
-         <Font size="90.0"/>
+         <Font size="72.0" />
       </font>
    </Button>
 </AnchorPane>

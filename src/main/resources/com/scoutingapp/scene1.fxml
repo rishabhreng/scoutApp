@@ -8,22 +8,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
-   <Text layoutX="226.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregame">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onTouchPressed="#reloadData" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #94aad6;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+   <Text layoutX="179.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Pregame">
       <font>
-         <Font size="38.0" />
+         <Font size="53.0" />
       </font>
    </Text>
-   <Text layoutX="35.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scouter Name">
+   <Text layoutX="11.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
       <font>
          <Font size="16.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="sln" layoutX="140.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D / John Doe" />
+   <LimitedTextField fx:id="sln" layoutX="120.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D / John Doe" />
 
-   <CheckBox fx:id="cp" layoutX="36.0" layoutY="146.0" mnemonicParsing="false" text="Cargo Preload" />
+   <CheckBox fx:id="cp" layoutX="35.0" layoutY="140.0" mnemonicParsing="false" text="Cargo Preload">
+      <font>
+         <Font size="16.0" />
+      </font></CheckBox>
 
-   <ComboBox fx:id="ml" layoutX="32.0" layoutY="175.0" prefWidth="150.0" promptText="Match Level">
+   <ComboBox fx:id="ml" layoutX="117.0" layoutY="175.0" prefWidth="150.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Quals" />
@@ -34,14 +37,14 @@
       </items>
    </ComboBox>
 
-   <Text layoutX="23.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Match Num">
+   <Text layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Num">
       <font>
          <Font size="16.0" />
       </font>
    </Text>
    <LimitedTextField fx:id="mn" layoutX="114.0" layoutY="222.0" onKeyPressed="#limit" />
 
-   <ComboBox fx:id="ran" layoutX="23.0" layoutY="261.0" prefHeight="26.0" prefWidth="245.0" promptText="Robot Alliance Number (red numbers)">
+   <ComboBox fx:id="ran" layoutX="16.0" layoutY="319.0" prefHeight="26.0" prefWidth="245.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Red-1" />
@@ -54,7 +57,7 @@
       </items>
    </ComboBox>
 
-   <Text layoutX="312.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team Num">
+   <Text layoutX="309.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Team Num">
       <font>
          <Font size="16.0" />
       </font>
@@ -71,17 +74,13 @@
          <Font size="18.0" />
       </font>
    </Button>
-   <ImageView fitHeight="167.0" fitWidth="298.0" layoutX="276.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="167.0" fitWidth="298.0" layoutX="275.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@field_image.png" />
       </image>
+
    </ImageView>
-   <Button layoutX="248.0" layoutY="360.0" mnemonicParsing="false" onAction="#reloadData" prefHeight="40.0" prefWidth="103.0" text="See Info">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Button>
-   <ComboBox fx:id="rp" layoutX="23.0" layoutY="307.0" prefHeight="26.0" prefWidth="246.0" promptText="Robot Field Position (white numbers)">
+   <ComboBox fx:id="rp" layoutX="309.0" layoutY="319.0" prefHeight="26.0" prefWidth="262.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="1" />
@@ -91,4 +90,19 @@
          </FXCollections>
       </items>
    </ComboBox>
+   <Text layoutX="13.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Alliance Number (red numbers)">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Text>
+   <Text layoutX="300.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Field Position (white numbers)">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Text>
+   <Text layoutX="32.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Level">
+      <font>
+         <Font size="15.0" />
+      </font>
+   </Text>
 </AnchorPane>

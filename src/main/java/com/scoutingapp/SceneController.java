@@ -1,3 +1,5 @@
+//TODO: reinvent layout, preferably on surface pros
+
 package com.scoutingapp;
 
 import javafx.event.ActionEvent;
@@ -9,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -54,7 +56,7 @@ public class SceneController {
     @FXML private CheckBox dt; // died/tipped
     @FXML private ComboBox<String> de; //defensive evasion
     @FXML private ComboBox<String> dp; //defensive performance
-    @FXML private TextField co; //comments
+    @FXML private TextArea co; //comments
     @FXML private LimitedTextField f; //fouls
     @FXML private LimitedTextField tf; //tech fouls
 //page 6
@@ -64,10 +66,30 @@ public class SceneController {
     private static int sceneIndex = 0;
     //stores user input data
     private static final HashMap<String, String> info = new HashMap<>();
-    static StringBuilder data;
-    BufferedImage bufferedImage;
+    private static StringBuilder data;
+    public BufferedImage bufferedImage;
     //compiles data in info HashMap into a String of text and sends to console/QR
-   @FXML public void sendInfo() throws Exception {
+    private static boolean isNextPageClicked = false;
+
+    public void initialize() {
+        //setting presets for nullable checkboxes, so they are not null by default
+        if (isNextPageClicked) {
+            if (sceneIndex == 1) {
+                ml.setValue("Quals");
+                ran.setValue("Red-1");
+                rp.setValue("1");
+            }
+            else if (sceneIndex == 4) cl.setValue("N/A or Failed");
+            else if (sceneIndex ==5) {
+                de.setValue("N/A");
+                dp.setValue("N/A");
+            }
+        }
+        //reload data for each page
+       reloadData();
+    }
+    //turns data into QR code and displays it
+    public void sendInfo() throws Exception {
        data = new StringBuilder();
 //       Integer aca = Integer.parseInt(lcsa.getText()) + Integer.parseInt(ucsa.getText() + Integer.parseInt(cmda.getText()));
        Integer tca = Integer.parseInt(info.get("lcst")) + Integer.parseInt(info.get("ucst"))+ Integer.parseInt(info.get("cmdt"));
@@ -100,63 +122,8 @@ public class SceneController {
         imageBox.setImage(img);
         System.out.println(Arrays.toString(info.entrySet().toArray()) + "info sent");
         }
-
-    //used in changing pages, doesn't need to be edited
-    private void setPage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("scene" + (sceneIndex) + ".fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setTitle("satApp Page" + (sceneIndex));
-        stage.setScene(scene);
-
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-        stage.setWidth(size.getWidth());
-        stage.setHeight(size.getHeight());
-        stage.setMaximized(true);
-        stage.show();
-//        stage.setFullScreen(true);
-        System.out.println("new page is "  + sceneIndex);
-    }
-
-    //reloads data when desired, make sure not to accidentally overwrite data while fumbling around
-    @FXML private void reloadData() {
-        if (sceneIndex == 1) {
-            sln.setText(info.get("sln"));
-            mn.setText(info.get("mn"));
-            tn.setText(info.get("tn"));
-            ran.setValue(info.get("ran"));
-            rp.setValue(info.get("rp"));
-            cp.setSelected(Boolean.parseBoolean(info.get("cp")));
-            ml.setValue(info.get("ml"));
-        } else if (sceneIndex == 2) {
-            aca.setText(info.get("aca"));
-            ucsa.setText(info.get("ucsa"));
-            lcsa.setText(info.get("lcsa"));
-            cmda.setText(info.get("cmda"));
-            ta.setSelected(Boolean.parseBoolean(info.get("ta")));
-        } else if (sceneIndex == 3) {
-            ucst.setText(info.get("ucst"));
-            lcst.setText(info.get("lcst"));
-            cmdt.setText(info.get("cmdt"));
-        } else if (sceneIndex == 4) {
-            cla.setSelected(Boolean.parseBoolean(info.get("cla")));
-            cl.setValue(info.get("cl"));
-        } else if (sceneIndex == 5) {
-            dt.setSelected(Boolean.parseBoolean(info.get("dt")));
-            de.setValue(info.get("de"));
-            dp.setValue(info.get("dp"));
-            co.setText(info.get("co"));
-            f.setText(info.get("f"));
-            tf.setText(info.get("tf"));
-
-            System.out.println("default reloadData call");
-        } else {
-            System.out.println("default reloadData call");
-        }
-    }
-
     //sends data to info HashMap, needs to be edited with introduction of new data elements
-    @FXML public void collectData() {
+    public void collectData() {
         if (sceneIndex == 1) {
             info.put("sln", sln.getText());
             info.put("tn", tn.getText());
@@ -190,23 +157,75 @@ public class SceneController {
         }
         System.out.println(Arrays.toString(info.entrySet().toArray()));
     }
+    //reloads data when desired, make sure not to accidentally overwrite data while fumbling around
+    public void reloadData() {
+            if (sceneIndex == 1) {
+                if(!(info.get("sln")==null))sln.setText(info.get("sln"));
+                if(!(info.get("mn")==null))mn.setText(info.get("mn"));
+                if(!(info.get("tn")==null))tn.setText(info.get("tn"));
+                if(!(info.get("ran")==null))ran.setValue(info.get("ran"));
+                if(!(info.get("rp")==null))rp.setValue(info.get("rp"));
+                if(!(info.get("cp")==null))cp.setSelected(Boolean.parseBoolean(info.get("cp")));
+                if(!(info.get("ml")==null)) ml.setValue(info.get("ml"));
+            } else if (sceneIndex == 2) {
+                if(!(info.get("aca")==null))aca.setText(info.get("aca"));
+                if(!(info.get("ucsa")==null))ucsa.setText(info.get("ucsa"));
+                if(!(info.get("lcsa")==null))lcsa.setText(info.get("lcsa"));
+                if(!(info.get("cmda")==null))cmda.setText(info.get("cmda"));
+                if(!(info.get("ta")==null))ta.setSelected(Boolean.parseBoolean(info.get("ta")));
+            } else if (sceneIndex == 3) {
+                if(!(info.get("ucst")==null))ucst.setText(info.get("ucst"));
+                if(!(info.get("lcst")==null)) lcst.setText(info.get("lcst"));
+                if(!(info.get("cmdt")==null))cmdt.setText(info.get("cmdt"));
+            } else if (sceneIndex == 4) {
+                if(!(info.get("cla")==null))cla.setSelected(Boolean.parseBoolean(info.get("cla")));
+                if(!(info.get("cl")==null))cl.setValue(info.get("cl"));
+            } else if (sceneIndex == 5) {
+                if(!(info.get("dt")==null))dt.setSelected(Boolean.parseBoolean(info.get("dt")));
+                if(!(info.get("de")==null))de.setValue(info.get("de"));
+                if(!(info.get("dp")==null))dp.setValue(info.get("dp"));
+                if(!(info.get("co")==null))co.setText(info.get("co"));
+                if(!(info.get("f")==null))f.setText(info.get("f"));
+                if(!(info.get("tf")==null))tf.setText(info.get("tf"));
+            } else {
+                System.out.println("default reloadData call");
+            }
+    }
 
-    //don't edit
-    @FXML public void goToNextPage(ActionEvent event) throws IOException {
-        System.out.println("prev page is " + sceneIndex);
+    //specific implementations of setPage for going to next and previous pages
+    public void goToNextPage(ActionEvent event) throws IOException {
+//        System.out.println("prev page is " + sceneIndex);
         collectData();
         if (sceneIndex >= 6) sceneIndex = 0;
         else sceneIndex++;
+        isNextPageClicked = true;
         setPage(event);
     }
-    @FXML public void goToPrevPage(ActionEvent event) throws IOException {
+    public void goToPrevPage(ActionEvent event) throws IOException {
         collectData();
         if (sceneIndex > 0) sceneIndex--;
+        isNextPageClicked = false;
         setPage(event);
+    }
+    //used in changing pages, doesn't need to be edited
+    private void setPage(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("scene" + (sceneIndex) + ".fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("satApp Page" + (sceneIndex));
+        stage.setScene(scene);
+
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        stage.setWidth(size.getWidth());
+        stage.setHeight(size.getHeight());
+        stage.setMaximized(true);
+        stage.show();
+//        stage.setFullScreen(true);
+        System.out.println("new page is "  + sceneIndex);
     }
 
     //edit when you want new restrictions for certain data
-    @FXML public void limit(KeyEvent keyEvent) {
+    public void limit(KeyEvent keyEvent) {
         LimitedTextField src = (LimitedTextField) keyEvent.getSource();
         if (src.equals(tn)) {
             src.setIntegerField();
@@ -222,7 +241,8 @@ public class SceneController {
         }
     }
 
-    @FXML public void doCopyToClipboard(ActionEvent event) {
+    //copies either data text or QR code based on button source that was clicked
+    public void doCopyToClipboard(ActionEvent event) {
        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
        if (event.getSource().getClass().equals(Button.class))
            if (((Button) event.getSource()).getText().contains("Text")) {
@@ -235,36 +255,36 @@ public class SceneController {
            }
     }
 
-    //don't edit
+    //don't edit, general methods for +/- buttons affecting corr. txtfields
     public void increment(LimitedTextField txtfield) {
         txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())+1));}
     public void decrement(LimitedTextField txtfield) {
         if(!txtfield.getText().equals("0")) txtfield.setText(String.valueOf(Integer.parseInt(txtfield.getText())-1));}
 
-    //add more of these when you add more "incrementer/decrementer button" elements for text elements
-    @FXML public void incrementACA() {increment(aca);}
-    @FXML public void decrementACA() {decrement(aca);}
+    //add more of these when you add more "incrementer/decrementer button" elements for corr. text elements
+    public void incrementACA() {increment(aca);}
+    public void decrementACA() {decrement(aca);}
 
-    @FXML public void incrementUCSA() {increment(ucsa);}
-    @FXML public void decrementUCSA() {decrement(ucsa);}
+    public void incrementUCSA() {increment(ucsa);}
+    public void decrementUCSA() {decrement(ucsa);}
 
-    @FXML public void incrementLCSA() {increment(lcsa);}
-    @FXML public void decrementLCSA() {decrement(lcsa);}
+    public void incrementLCSA() {increment(lcsa);}
+    public void decrementLCSA() {decrement(lcsa);}
 
-    @FXML public void incrementCMDA() {increment(cmda);}
-    @FXML public void decrementCMDA() {decrement(cmda);}
+    public void incrementCMDA() {increment(cmda);}
+    public void decrementCMDA() {decrement(cmda);}
 
-    @FXML public void incrementUCST() {increment(ucst);}
-    @FXML public void decrementUCST() {decrement(ucst);}
+    public void incrementUCST() {increment(ucst);}
+    public void decrementUCST() {decrement(ucst);}
 
-    @FXML public void incrementLCST() {increment(lcst);}
-    @FXML public void decrementLCST() {decrement(lcst);}
+    public void incrementLCST() {increment(lcst);}
+    public void decrementLCST() {decrement(lcst);}
 
-    @FXML public void incrementCMDT() {increment(cmdt);}
-    @FXML public void decrementCMDT() {decrement(cmdt);}
+    public void incrementCMDT() {increment(cmdt);}
+    public void decrementCMDT() {decrement(cmdt);}
 
-    @FXML public void incrementF() {increment(f);}
-    @FXML public void decrementF() {decrement(f);}
+    public void incrementF() {increment(f);}
+    public void decrementF() {decrement(f);}
 
     @FXML public void incrementTF() {increment(tf);}
     @FXML public void decrementTF() {decrement(tf);}

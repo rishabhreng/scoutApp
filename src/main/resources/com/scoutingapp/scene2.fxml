@@ -5,14 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
-   <Text layoutX="226.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Auton">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fde2ca;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+   <Text layoutX="226.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Auton">
       <font>
          <Font size="38.0" />
       </font>
    </Text>
-   <CheckBox fx:id="ta" layoutX="31.0" layoutY="95.0" mnemonicParsing="false" text="Taxied?" />
-   <Button alignment="CENTER" layoutX="207.0" layoutY="146.0" mnemonicParsing="false" onAction="#incrementACA" text="+" />
+   <CheckBox fx:id="ta" layoutX="31.0" layoutY="95.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Taxied?">
+      <font>
+         <Font size="23.0" />
+      </font></CheckBox>
+   <Button alignment="CENTER" layoutX="204.0" layoutY="146.0" mnemonicParsing="false" onAction="#incrementACA" prefHeight="26.0" prefWidth="31.0" text="+" />
    <LimitedTextField fx:id="aca" layoutX="171.0" layoutY="146.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <Button layoutX="146.0" layoutY="146.0" mnemonicParsing="false" onAction="#decrementACA" text="-" />
    <Text layoutX="20.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Acquired" />
@@ -28,19 +31,14 @@
    </Button>
    <Text layoutX="20.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Upper Cargo Scored" />
    <Text layoutX="20.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lower Cargo Scored" />
-   <Text layoutX="20.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Missed/Dropped" />
+   <Text layoutX="11.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cargo Missed/Dropped" />
    <Button layoutX="146.0" layoutY="180.0" mnemonicParsing="false" onAction="#decrementUCSA" text="-" />
    <Button layoutX="146.0" layoutY="208.0" mnemonicParsing="false" onAction="#decrementLCSA" text="-" />
-   <Button layoutX="146.0" layoutY="239.0" mnemonicParsing="false" onAction="#decrementCMDA" text="-" />
+   <Button layoutX="146.0" layoutY="240.0" mnemonicParsing="false" onAction="#decrementCMDA" text="-" />
    <LimitedTextField fx:id="ucsa" layoutX="170.0" layoutY="180.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <LimitedTextField fx:id="lcsa" layoutX="170.0" layoutY="209.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <LimitedTextField fx:id="cmda" layoutX="170.0" layoutY="240.0" prefHeight="26.0" prefWidth="31.0" text="0" />
    <Button layoutX="207.0" layoutY="180.0" mnemonicParsing="false" onAction="#incrementUCSA" text="+" />
    <Button layoutX="207.0" layoutY="209.0" mnemonicParsing="false" onAction="#incrementLCSA" text="+" />
-   <Button layoutX="207.0" layoutY="239.0" mnemonicParsing="false" onAction="#incrementCMDA" text="+" />
-   <Button layoutX="250.0" layoutY="361.0" mnemonicParsing="false" onAction="#reloadData" text="See Info">
-      <font>
-         <Font size="18.0" />
-      </font>
-   </Button>
+   <Button layoutX="207.0" layoutY="240.0" mnemonicParsing="false" onAction="#incrementCMDA" text="+" />
 </AnchorPane>
