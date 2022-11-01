@@ -8,25 +8,28 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onTouchPressed="#reloadData" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #94aad6;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
-   <Text layoutX="179.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Pregame">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onTouchPressed="#reloadData" prefHeight="1824.0" prefWidth="2736.0" style="-fx-background-color: #94aad6;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+   <Text layoutX="545.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Pregame">
       <font>
-         <Font size="53.0" />
+         <Font size="69.0" />
       </font>
    </Text>
-   <Text layoutX="11.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
+   <Text layoutX="28.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Scouter Name">
+      <font>
+         <Font size="27.0" />
+      </font>
+   </Text>
+   <LimitedTextField fx:id="sln" layoutX="14.0" layoutY="134.0" onKeyPressed="#limit" prefHeight="36.0" prefWidth="233.0" promptText="John D / John Doe">
       <font>
          <Font size="16.0" />
-      </font>
-   </Text>
-   <LimitedTextField fx:id="sln" layoutX="120.0" layoutY="85.0" onKeyPressed="#limit" promptText="John D / John Doe" />
+      </font></LimitedTextField>
 
-   <CheckBox fx:id="cp" layoutX="35.0" layoutY="140.0" mnemonicParsing="false" text="Cargo Preload">
+   <CheckBox fx:id="cp" layoutX="17.0" layoutY="197.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="211.0" text="Cargo Preload">
       <font>
-         <Font size="16.0" />
+         <Font size="24.0" />
       </font></CheckBox>
 
-   <ComboBox fx:id="ml" layoutX="117.0" layoutY="175.0" prefWidth="150.0">
+   <ComboBox fx:id="ml" layoutX="604.0" layoutY="231.0" prefHeight="52.0" prefWidth="195.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Quals" />
@@ -37,14 +40,17 @@
       </items>
    </ComboBox>
 
-   <Text layoutX="20.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Num">
+   <Text layoutX="19.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Num">
       <font>
-         <Font size="16.0" />
+         <Font size="24.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="mn" layoutX="114.0" layoutY="222.0" onKeyPressed="#limit" />
+   <LimitedTextField fx:id="mn" layoutX="166.0" layoutY="257.0" onKeyPressed="#limit">
+      <font>
+         <Font size="18.0" />
+      </font></LimitedTextField>
 
-   <ComboBox fx:id="ran" layoutX="16.0" layoutY="319.0" prefHeight="26.0" prefWidth="245.0">
+   <ComboBox fx:id="ran" layoutX="397.0" layoutY="387.0" prefHeight="39.0" prefWidth="272.0">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="Red-1" />
@@ -57,30 +63,33 @@
       </items>
    </ComboBox>
 
-   <Text layoutX="309.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Team Num">
+   <Text layoutX="344.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Team Num">
       <font>
-         <Font size="16.0" />
+         <Font size="27.0" />
       </font>
    </Text>
-   <LimitedTextField fx:id="tn" layoutX="401.0" layoutY="85.0" onKeyPressed="#limit" />
+   <LimitedTextField fx:id="tn" layoutX="308.0" layoutY="134.0" onKeyPressed="#limit" promptText="27/118/6672">
+      <font>
+         <Font size="17.0" />
+      </font></LimitedTextField>
 
-   <Button layoutY="360.0" mnemonicParsing="false" onAction="#goToPrevPage" text="Prev Page">
+   <Button layoutY="444.0" mnemonicParsing="false" onAction="#goToPrevPage" prefHeight="52.0" prefWidth="118.0" text="Prev Page">
       <font>
          <Font size="18.0" />
       </font>
    </Button>
-   <Button layoutX="494.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToNextPage" text="Next Page">
+   <Button layoutX="1177.0" layoutY="440.0" mnemonicParsing="false" onAction="#goToNextPage" prefHeight="52.0" prefWidth="139.0" text="Next Page">
       <font>
          <Font size="18.0" />
       </font>
    </Button>
-   <ImageView fitHeight="167.0" fitWidth="298.0" layoutX="275.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fitHeight="230.0" fitWidth="428.0" layoutX="888.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@field_image.png" />
       </image>
 
    </ImageView>
-   <ComboBox fx:id="rp" layoutX="309.0" layoutY="319.0" prefHeight="26.0" prefWidth="262.0">
+   <ComboBox fx:id="rp" layoutX="397.0" layoutY="333.0" prefHeight="39.0" prefWidth="272.0" visibleRowCount="15">
       <items>
          <FXCollections fx:factory="observableArrayList">
             <String fx:value="1" />
@@ -90,19 +99,19 @@
          </FXCollections>
       </items>
    </ComboBox>
-   <Text layoutX="13.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Alliance Number (red numbers)">
+   <Text layoutX="11.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Alliance Number (red numbers)">
       <font>
-         <Font size="15.0" />
+         <Font size="21.0" />
       </font>
    </Text>
-   <Text layoutX="300.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Field Position (white numbers)">
+   <Text layoutX="14.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Robot Field Position (white numbers)">
       <font>
-         <Font size="16.0" />
+         <Font size="21.0" />
       </font>
    </Text>
-   <Text layoutX="32.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Level">
+   <Text layoutX="631.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-weight: bold;" text="Match Level">
       <font>
-         <Font size="15.0" />
+         <Font size="25.0" />
       </font>
    </Text>
 </AnchorPane>

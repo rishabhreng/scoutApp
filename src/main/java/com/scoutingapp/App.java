@@ -17,8 +17,8 @@ public class App extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
-        primaryStage.setWidth(size.getWidth());
-        primaryStage.setHeight(size.getHeight());
+        primaryStage.setWidth(size.getWidth()); //2736 px
+        primaryStage.setHeight(size.getHeight()); //1824 px
         primaryStage.setMaximized(true);
         primaryStage.centerOnScreen();
         primaryStage.show();
