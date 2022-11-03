@@ -209,6 +209,7 @@ public class SceneController {
     }
     //used in changing pages, doesn't need to be edited
     private void setPage(ActionEvent event) throws IOException {
+
         Parent root = FXMLLoader.load(getClass().getResource("scene" + (sceneIndex) + ".fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
