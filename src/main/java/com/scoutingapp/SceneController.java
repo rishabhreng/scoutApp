@@ -43,10 +43,10 @@ public class SceneController {
     @FXML private ComboBox<String> ran; //robot alliance number
     @FXML private ComboBox<String> rp; //robot field position
     @FXML private ComboBox<String> ml; //match level
-    @FXML private CheckBox cp; //cargo preload
 //page 2
     @FXML private LimitedTextField aca, ucsa, lcsa, cmda; //cargo acquired, ucargo, lcargo, cargodropped
     @FXML private CheckBox ta; //taxied
+    @FXML private CheckBox cp; //cargo preload
 //page 3
     @FXML private LimitedTextField ucst, lcst, cmdt; //ucargo, lcargo, cargodropped
 //page4
@@ -65,7 +65,7 @@ public class SceneController {
     //used for changing pages
     private static int sceneIndex = 0;
     //stores user input data
-    private static final HashMap<String, String> info = new HashMap<>();
+    private static HashMap<String, String> info = new HashMap<>();
     private static StringBuilder data;
     public BufferedImage bufferedImage;
     //compiles data in info HashMap into a String of text and sends to console/QR
@@ -129,10 +129,10 @@ public class SceneController {
             info.put("tn", tn.getText());
             info.put("mn", mn.getText());
             info.put("ml", ml.getValue());
-            info.put("cp", String.valueOf(cp.isSelected()));
             info.put("ran", ran.getValue());
             info.put("rp", rp.getValue());
         } else if (sceneIndex == 2) {
+            info.put("cp", String.valueOf(cp.isSelected()));
             info.put("aca", aca.getText());
             info.put("ucsa", ucsa.getText());
             info.put("lcsa", lcsa.getText());
@@ -165,9 +165,9 @@ public class SceneController {
                 if(!(info.get("tn")==null))tn.setText(info.get("tn"));
                 if(!(info.get("ran")==null))ran.setValue(info.get("ran"));
                 if(!(info.get("rp")==null))rp.setValue(info.get("rp"));
-                if(!(info.get("cp")==null))cp.setSelected(Boolean.parseBoolean(info.get("cp")));
                 if(!(info.get("ml")==null)) ml.setValue(info.get("ml"));
             } else if (sceneIndex == 2) {
+                if(!(info.get("cp")==null))cp.setSelected(Boolean.parseBoolean(info.get("cp")));
                 if(!(info.get("aca")==null))aca.setText(info.get("aca"));
                 if(!(info.get("ucsa")==null))ucsa.setText(info.get("ucsa"));
                 if(!(info.get("lcsa")==null))lcsa.setText(info.get("lcsa"));
@@ -187,16 +187,22 @@ public class SceneController {
                 if(!(info.get("co")==null))co.setText(info.get("co"));
                 if(!(info.get("f")==null))f.setText(info.get("f"));
                 if(!(info.get("tf")==null))tf.setText(info.get("tf"));
-            } else {
-                System.out.println("default reloadData call");
+            }
+            else {
+//                System.out.println("default reloadData call");
             }
     }
 
     //specific implementations of setPage for going to next and previous pages
+    public void resetAll(ActionEvent event) throws IOException {
+        data = new StringBuilder();
+        info = new HashMap<>();
+        goToNextPage(event);
+    }
     public void goToNextPage(ActionEvent event) throws IOException {
 //        System.out.println("prev page is " + sceneIndex);
         collectData();
-        if (sceneIndex >= 6) sceneIndex = 0;
+        if (sceneIndex == 6) sceneIndex = 0;
         else sceneIndex++;
         isNextPageClicked = true;
         setPage(event);
@@ -221,8 +227,7 @@ public class SceneController {
         stage.setHeight(size.getHeight());
         stage.setMaximized(true);
         stage.show();
-//        stage.setFullScreen(true);
-        System.out.println("new page is "  + sceneIndex);
+//        System.out.println("new page is "  + sceneIndex);
     }
 
     //edit when you want new restrictions for certain data

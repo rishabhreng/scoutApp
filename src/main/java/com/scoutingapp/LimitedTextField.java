@@ -8,15 +8,14 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 
 public class LimitedTextField extends TextField {
-    private IntegerProperty maxLength = new SimpleIntegerProperty(this,
+    private final IntegerProperty maxLength = new SimpleIntegerProperty(this,
             "maxLength", -1);
-    private StringProperty restrict = new SimpleStringProperty(this, "restrict");
+    private final StringProperty restrict = new SimpleStringProperty(this, "restrict");
 
     public LimitedTextField() {
-        textProperty().addListener(new ChangeListener<String>() {
+        textProperty().addListener(new ChangeListener<>() {
             private boolean ignore;
 
             @Override
@@ -79,7 +78,7 @@ public class LimitedTextField extends TextField {
 
     /**
      * Gets a regular expression character class which restricts the user input.
-     *
+     * <p>
      *
      * @return The regular expression.
      * @see #getRestrict()
@@ -90,7 +89,7 @@ public class LimitedTextField extends TextField {
 
     /**
      * Sets a regular expression character class which restricts the user input.
-     *
+     * <p>
      * E.g. [0-9] only allows numeric values.
      *
      * @param restrict

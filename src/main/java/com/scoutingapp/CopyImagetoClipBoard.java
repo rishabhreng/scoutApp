@@ -2,14 +2,13 @@ package com.scoutingapp;
 
 import java.awt.*;
 import java.awt.datatransfer.*;
-import java.awt.image.*;
-import java.io.*;
+import java.awt.image.BufferedImage;
 // from https://stackoverflow.com/questions/4552045/copy-bufferedimage-to-clipboard
 public class CopyImagetoClipBoard implements ClipboardOwner {
 
     public void copyImage(BufferedImage bi)
     {
-        TransferableImage trans = new TransferableImage( bi );
+        TransferableImage trans = new TransferableImage(bi);
         Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
         c.setContents( trans, this );
     }
@@ -18,7 +17,7 @@ public class CopyImagetoClipBoard implements ClipboardOwner {
         System.out.println( "Lost Clipboard Ownership" );
     }
 
-    private class TransferableImage implements Transferable {
+    private static class TransferableImage implements Transferable {
 
         Image i;
 
@@ -27,7 +26,7 @@ public class CopyImagetoClipBoard implements ClipboardOwner {
         }
 
         public Object getTransferData( DataFlavor flavor )
-                throws UnsupportedFlavorException, IOException {
+                throws UnsupportedFlavorException {
             if ( flavor.equals( DataFlavor.imageFlavor ) && i != null ) {
                 return i;
             }
@@ -44,8 +43,8 @@ public class CopyImagetoClipBoard implements ClipboardOwner {
 
         public boolean isDataFlavorSupported( DataFlavor flavor ) {
             DataFlavor[] flavors = getTransferDataFlavors();
-            for ( int i = 0; i < flavors.length; i++ ) {
-                if ( flavor.equals( flavors[ i ] ) ) {
+            for (DataFlavor dataFlavor : flavors) {
+                if (flavor.equals(dataFlavor)) {
                     return true;
                 }
             }
