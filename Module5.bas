@@ -118,9 +118,9 @@ Sub saveData(ByVal inp As String, Optional ByVal rowNum As String = "6")
         Worksheets("Data Entry").Range("S" + rowNum) = data.Item("tf")
         
         If data.Item("dt") = 1 Then
-            Call EnterNotes(data.Item("sln") & "—" & data.Item("ran") & "—" & data.Item("ml") & data.Item("mn") & "—died/tipped; " & data.Item("co"), Range("A" & rowNum).value)
+            Call EnterNotes(data.Item("sln") & "-" & data.Item("ran") & "-" & data.Item("ml") & data.Item("mn") & "-died/tipped; " & data.Item("co"), Range("A" & rowNum).value)
         Else
-           Call EnterNotes(data.Item("sln") & "—" & data.Item("ran") & "—" & data.Item("ml") & data.Item("mn") & "—" & data.Item("co"), Range("A" & rowNum).value)
+           Call EnterNotes(data.Item("sln") & "-" & data.Item("ran") & "-" & data.Item("ml") & data.Item("mn") & "-" & data.Item("co"), Range("A" & rowNum).value)
         End If
     End If
 End Sub
