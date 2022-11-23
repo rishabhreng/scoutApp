@@ -189,7 +189,7 @@ public class SceneController {
                 if(info.get("tf")!=null)tf.setText(info.get("tf"));
             }
             else if (sceneIndex == 6) {
-                if(info.get("tn")!=null)reminderBox.setText("You Scouted Team " + info.get("tn") + ".");
+                if(info.get("tn")!=null)reminderBox.setText(info.get("sln") + " Scouted Team " + info.get("tn") + ".");
             }
     }
 
@@ -215,7 +215,6 @@ public class SceneController {
     }
     //used in changing pages, doesn't need to be edited
     private void setPage(ActionEvent event) throws IOException {
-
         Parent root = FXMLLoader.load(getClass().getResource("scene" + (sceneIndex) + ".fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
