@@ -1,3 +1,5 @@
+//TODO: reinvent layout, preferably on surface pros
+
 package com.scoutingapp;
 
 import javafx.event.ActionEvent;
@@ -59,7 +61,6 @@ public class SceneController {
     @FXML private LimitedTextField tf; //tech fouls
 //page 6
     @FXML private ImageView imageBox;
-    @FXML private Text reminderBox;
 
     //used for changing pages
     private static int sceneIndex = 0;

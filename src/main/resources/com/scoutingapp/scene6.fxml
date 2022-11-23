@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1324.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.scoutingapp.SceneController">
    <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="363.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendInfo" prefHeight="168.0" prefWidth="697.0" text="Generate QR Code" textOverrun="CLIP">
       <font>
          <Font size="72.0" />
@@ -32,8 +32,4 @@
          <Font size="34.0" />
       </font>
    </Button>
-   <Text fx:id="reminderBox" fill="WHITE" layoutX="62.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Scouted Team 6672." wrappingWidth="200.0">
-      <font>
-         <Font size="39.0" />
-      </font></Text>
 </AnchorPane>
