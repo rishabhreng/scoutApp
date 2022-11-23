@@ -32,7 +32,7 @@
          <Font size="34.0" />
       </font>
    </Button>
-   <Text fx:id="reminderBox" fill="WHITE" layoutX="62.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Scouted Team 6672." wrappingWidth="200.0">
+   <Text fx:id="reminderBox" fill="WHITE" layoutX="62.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You Scouted Team XXXX." wrappingWidth="200.0">
       <font>
          <Font size="39.0" />
       </font></Text>

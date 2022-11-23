@@ -13,6 +13,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -159,36 +160,36 @@ public class SceneController {
     //reloads data when desired, make sure not to accidentally overwrite data while fumbling around
     public void reloadData() {
             if (sceneIndex == 1) {
-                if(!(info.get("sln")==null))sln.setText(info.get("sln"));
-                if(!(info.get("mn")==null))mn.setText(info.get("mn"));
-                if(!(info.get("tn")==null))tn.setText(info.get("tn"));
-                if(!(info.get("ran")==null))ran.setValue(info.get("ran"));
-                if(!(info.get("rp")==null))rp.setValue(info.get("rp"));
-                if(!(info.get("ml")==null)) ml.setValue(info.get("ml"));
+                if(info.get("sln")!=null)sln.setText(info.get("sln"));
+                if(info.get("mn")!=null)mn.setText(info.get("mn"));
+                if(info.get("tn")!=null)tn.setText(info.get("tn"));
+                if(info.get("ran")!=null)ran.setValue(info.get("ran"));
+                if(info.get("rp")!=null)rp.setValue(info.get("rp"));
+                if(info.get("ml")!=null)ml.setValue(info.get("ml"));
             } else if (sceneIndex == 2) {
-                if(!(info.get("cp")==null))cp.setSelected(Boolean.parseBoolean(info.get("cp")));
-                if(!(info.get("aca")==null))aca.setText(info.get("aca"));
-                if(!(info.get("ucsa")==null))ucsa.setText(info.get("ucsa"));
-                if(!(info.get("lcsa")==null))lcsa.setText(info.get("lcsa"));
-                if(!(info.get("cmda")==null))cmda.setText(info.get("cmda"));
-                if(!(info.get("ta")==null))ta.setSelected(Boolean.parseBoolean(info.get("ta")));
+                if(info.get("cp")!=null)cp.setSelected(Boolean.parseBoolean(info.get("cp")));
+                if(info.get("aca")!=null)aca.setText(info.get("aca"));
+                if(info.get("ucsa")!=null)ucsa.setText(info.get("ucsa"));
+                if(info.get("lcsa")!=null)lcsa.setText(info.get("lcsa"));
+                if(info.get("cmda")!=null)cmda.setText(info.get("cmda"));
+                if(info.get("ta")!=null)ta.setSelected(Boolean.parseBoolean(info.get("ta")));
             } else if (sceneIndex == 3) {
-                if(!(info.get("ucst")==null))ucst.setText(info.get("ucst"));
-                if(!(info.get("lcst")==null)) lcst.setText(info.get("lcst"));
-                if(!(info.get("cmdt")==null))cmdt.setText(info.get("cmdt"));
+                if(info.get("ucst")!=null)ucst.setText(info.get("ucst"));
+                if(info.get("lcst")!=null) lcst.setText(info.get("lcst"));
+                if(info.get("cmdt")!=null)cmdt.setText(info.get("cmdt"));
             } else if (sceneIndex == 4) {
-                if(!(info.get("cla")==null))cla.setSelected(Boolean.parseBoolean(info.get("cla")));
-                if(!(info.get("cl")==null))cl.setValue(info.get("cl"));
+                if(info.get("cla")!=null)cla.setSelected(Boolean.parseBoolean(info.get("cla")));
+                if(info.get("cl")!=null)cl.setValue(info.get("cl"));
             } else if (sceneIndex == 5) {
-                if(!(info.get("dt")==null))dt.setSelected(Boolean.parseBoolean(info.get("dt")));
-                if(!(info.get("de")==null))de.setValue(info.get("de"));
-                if(!(info.get("dp")==null))dp.setValue(info.get("dp"));
-                if(!(info.get("co")==null))co.setText(info.get("co"));
-                if(!(info.get("f")==null))f.setText(info.get("f"));
-                if(!(info.get("tf")==null))tf.setText(info.get("tf"));
+                if(info.get("dt")!=null)dt.setSelected(Boolean.parseBoolean(info.get("dt")));
+                if(info.get("de")!=null)de.setValue(info.get("de"));
+                if(info.get("dp")!=null)dp.setValue(info.get("dp"));
+                if(info.get("co")!=null)co.setText(info.get("co"));
+                if(info.get("f")!=null)f.setText(info.get("f"));
+                if(info.get("tf")!=null)tf.setText(info.get("tf"));
             }
-            else {
-//                System.out.println("default reloadData call");
+            else if (sceneIndex == 6) {
+                if(info.get("tn")!=null)reminderBox.setText("You Scouted Team " + info.get("tn") + ".");
             }
     }
 
