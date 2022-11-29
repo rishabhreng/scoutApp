@@ -109,4 +109,9 @@
          <Font size="24.0" />
       </font>
    </Text>
+   <ImageView fitHeight="97.0" fitWidth="342.0" layoutX="925.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@team_ids.png" />
+      </image>
+   </ImageView>
 </AnchorPane>
